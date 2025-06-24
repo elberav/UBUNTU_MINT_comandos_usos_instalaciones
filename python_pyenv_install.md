@@ -19,9 +19,12 @@ libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-
 #### Paso 3. Instalación recomendada de pyenv
 sudo apt install curl
 curl https://pyenv.run | bash
+
+------------------------------------------------------------------
 #### Paso 3.5. Si en caso hay error de que ya existe el archivo, eliminar y volver a instalar
 rm -rf ~/.pyenv
 curl https://pyenv.run | bash
+------------------------------------------------------------------
 
 #### Paso 4. Después de la instalación, el script te dará instrucciones sobre cómo agregar pyenv a tu PATH y cómo inicializarlo en tu shell (bash, zsh, etc.). Generalmente, implica añadir estas líneas a tu archivo ~/.bashrc (o ~/.zshrc si usas Zsh):
 nano ~/.bashrc # Primero habrir el archivos
