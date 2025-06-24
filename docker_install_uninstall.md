@@ -11,11 +11,11 @@ sudo apt install -y ca-certificates curl gnupg lsb-release
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-
+-------------------------------------------------------------------------------
 #### 3.5. >>>ALTERNATIVO AL COMANDO ANTERIOR EN CASO DE ERROR<<<
 curl -fsSL https://get.docker.com/ -o get-docker.sh # ALTERNATIVO (Este script contiene todas las instrucciones para detectar tu distribución y versión de sistema operativo, y luego instalar la última versión estable de Docker automáticamente)
 sudo sh get-docker.sh # Ejecutar el script de instalación con privilegios de administrador. Ejecuta ese script descargado con permisos de superusuario (sudo), lo que agrega el repositorio de Docker. Importa la clave GPG. Instala docker-ce, docker-ce-cli y containerd.io. Habilita y arranca el servicio de Docker.
-
+-------------------------------------------------------------------------------
 
 #### 4. Le dice a tu sistema dónde encontrar los paquetes de Docker. Añade el repositorio oficial de Docker
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
