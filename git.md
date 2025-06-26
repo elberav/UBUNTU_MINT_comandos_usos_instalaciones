@@ -15,7 +15,7 @@ git config user.email "tuemail@ejemplo.com"
 git config --global user.name TuNombreDeUsuario
 git config --global user.email tuemail@ejemplo.com
 
-#### (RECOMENDACION) Afecta al repositorioactual
+#### (RECOMENDACION) Afecta al repositorio actual
 git config user.name TuNombreDeUsuario
 git config user.email tuemail@ejemplo.com
 
