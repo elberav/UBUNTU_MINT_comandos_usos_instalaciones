@@ -46,8 +46,8 @@ git branch -m nombre_de_la_rama # Cambias la rama por default con cualquier nomb
 git remote add origin https://github.com/nombre_usuario/nombre_proyecto.git # Conectar repositorio remoto con el local
 git add . # Agrega todos los archivos modificados y añadidos en un repositorio local (área de staging), preparándolos para el próximo commit.
 git commit -m "tu_comentario" # Comenta los cambios de los archivos editados y añadidos.
-git push -u origin main # Sube tus cambios locales del branch main al repositorio remoto. Cambiar nombre de rama si quieres crear uno nuevo en GitHuby subir cambios 
-git push origin main # Se usa una vez usado el comando con `push -u`(ya esta conectado)
+git push -u origin main # Sube tus cambios locales del branch main al repositorio remoto. Cambiar nombre de rama si quieres crear uno nuevo en GitHub y subir cambios 
+git push origin main # Se después de ejecutar el comando `push -u` (`-u`establece una relación entre la rama local y la rama remota un sola vez)
 git push --force # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
 git remote -v # Muestra las URLs de los repositorios remotos configurados. Útil para verificar a dónde se están enviando o desde dónde se están trayendo los cambios.
 ---------------------------------------------------------------------
