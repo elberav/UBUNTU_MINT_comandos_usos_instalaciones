@@ -52,12 +52,49 @@ git push -u origin main # Sube tus cambios locales del branch main al repositori
 git push origin main # Para las subidas siguientes al repositorio remoto, una vez que ya estableciste la conexión inicial con git push `-u origin main`
 ---------------------------------------------------------------------
 
-git push --force origin main `ó` # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
+git push --force-with-lease origin main `ó` --force-with-lease -u origin main  # Verifica si hubo cambios en el remoto antes de forzar le push y sobrescribirlo evitando el cambio de alguien.
+git push --force origin main `ó` --force -u origin main  # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
 git remote -v # Muestra las URLs de los repositorios remotos configurados. Útil para verificar a dónde se están enviando o desde dónde se están trayendo los cambios.
 ---------------------------------------------------------------------
 git pull origin main # Trae los cambios editados o añadidos, lo hace igual con nuevos archivos añadidos
-git pull --rebase origin main # Reescribe sobre tu trabajo local (ej: si en el remoto se borran carpetas/ archivos o codigo, en tu local también lo hará).
-git clone https://github.com/nombre_usuario/nombre_repositorio.git # Clonar un repositorio desde GitHub (en repos privados primero tienes que tener acceso, puedes clonar si es repositorio propio)
+git pull --rebase origin main
+# Descarga los cambios de origin/main y reordena tus commits locales encima de ellos.
+# Si en el remoto se eliminaron carpetas, archivos o líneas de código, en tu local también se reflejarán esos cambios al finalizar el rebase.
+# Mantiene un historial más lineal, sin commits de merge.
+
+git clone https://github.com/nombre_usuario/nombre_repositorio.git
+# Clonar un repositorio desde GitHub (en repos privados primero tienes que tener acceso, puedes clonar si es repositorio propio)
+---------------------------------------------------------------------
+
+git fetch origin
+# Descarga los commits, ramas y actualizaciones del repositorio remoto origin.
+# No cambia tu rama local ni tu carpeta de trabajo. Solo actualiza las referencias remotas (por ejemplo, origin/main).
+# Permite ver los cambios nuevos en remoto antes de integrarlos a tu rama local.
+
+git log HEAD..origin/main --oneline # Muestra los commits nuevo en la rama remota.
+git log origin/main --oneline #Todo el historial de la rama remota origin/main.
+git log origin/main # Muestra el historial completo de commits de la rama remota origin/main.
+git log	# El historial de tu rama local actual.
+git diff origin/main # Muestra exactamente qué líneas cambiaron en los archivos, comparando tu rama local con la rama remota origin/main.
+
+
+git merge origin/main
+# Si hiciste fetch antes, y ambos (tú y el remoto) modificaron la misma línea de un archivo, Git generará un conflicto que debes resolver.
+# Si no ejecutaste fetch, usará la referencia de origin/main que tengas localmente (puede estar desactualizada) y no detectará cambios recientes del remoto.
+# Crea un commit de merge si hay diferencias. Mantiene la historia de ambos flujos de trabajo.
+
+git rebase origin/main # Ideal si quieres que tu trabajo parezca que fue hecho “después” de los cambios en remoto o locales.
+---------------------------------------------------------------------
+git fetch origin # Actualiza tu referencia remota.
+git rebase origin/main # Reaplica tus commits locales encima de los cambios de origin/main, como si los hubieras hecho después.
+---------------------------------------------------------------------
+git fetch origin # Actualiza tu referencia remota.
+git merge origin/main # Fusiona los cambios de origin/main en tu rama local, manteniendo tus cambios locales y combinándolos con los remotos.
+---------------------------------------------------------------------
+git fetch origin
+git reset --hard origin/main # Reemplaza todo tu repositorio local con el estado de origin/main.
+git clean -fd # Elimina archivos no versionados y carpetas no versionadas.
+git fetch origin && git reset --hard origin/main && git clean -fd # Comando directo
 ---------------------------------------------------------------------
 git fetch origin # Descarga la última versión del repositorio remoto (sin tocar tus archivos aún).
 git reset --hard origin/main # Reemplaza tu rama local con la versión del remoto. Tu trabajo local se borra y se reemplaza completamente con lo que hay en el remoto.
