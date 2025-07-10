@@ -50,7 +50,9 @@ git status # Muestra el estado actual de tu repositorio Git.
 git status -s `ó` git status --short # Muestra un resumen conciso de los cambios, usando códigos de una o dos letras para indicar el estado de cada archivo (ej: ?? para no rastreado,  M para modificado, A  para agregado).
 git push -u origin main # Sube tus cambios locales del branch main al repositorio remoto. Cambiar nombre de rama si quieres crear uno nuevo en GitHub y subir cambios 
 git push origin main # Para las subidas siguientes al repositorio remoto, una vez que ya estableciste la conexión inicial con git push `-u origin main`
-git push --force # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
+---------------------------------------------------------------------
+
+git push --force origin main `ó` # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
 git remote -v # Muestra las URLs de los repositorios remotos configurados. Útil para verificar a dónde se están enviando o desde dónde se están trayendo los cambios.
 ---------------------------------------------------------------------
 git pull origin main # Trae los cambios editados o añadidos, lo hace igual con nuevos archivos añadidos
