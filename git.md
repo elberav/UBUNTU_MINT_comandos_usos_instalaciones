@@ -41,11 +41,13 @@ git config --list
 ```bash
 git init # Inicia un repositorio local
 git branch # te dice en que rama estas
-git branch -m nombre_de_la_rama # Cambias la rama por default con cualquier nombre. Default (main, master).
+git branch -m nombre_de_la_rama # Cambia la rama por la del repositorio remoto o dejalo por default. Default (main, master).
 ---------------------------------------------------------------------
 git remote add origin https://github.com/nombre_usuario/nombre_proyecto.git # Conectar repositorio remoto con el local
 git add . # Agrega todos los archivos modificados y añadidos en un repositorio local (área de staging), preparándolos para el próximo commit.
 git commit -m "tu_comentario" # Comenta los cambios de los archivos editados y añadidos.
+git status # Muestra el estado actual de tu repositorio Git.
+git status -s `ó` git status --short# Muestra un resumen conciso de los cambios, usando códigos de una o dos letras para indicar el estado de cada archivo (ej: ?? para no rastreado,  M para modificado, A  para agregado).
 git push -u origin main # Sube tus cambios locales del branch main al repositorio remoto. Cambiar nombre de rama si quieres crear uno nuevo en GitHub y subir cambios 
 git push origin main # Para las subidas siguientes al repositorio remoto, una vez que ya estableciste la conexión inicial con git push `-u origin main`
 git push --force # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
@@ -53,6 +55,7 @@ git remote -v # Muestra las URLs de los repositorios remotos configurados. Útil
 ---------------------------------------------------------------------
 git pull origin main # Trae los cambios editados o añadidos, lo hace igual con nuevos archivos añadidos
 git pull --rebase origin main # Reescribe sobre tu trabajo local (ej: si en el remoto se borran carpetas/ archivos o codigo, en tu local también lo hará).
+git clone https://github.com/nombre_usuario/nombre_repositorio.git # Clonar un repositorio desde GitHub (en repos privados primero tienes que tener acceso, puedes clonar si es repositorio propio)
 ---------------------------------------------------------------------
 git fetch origin # Descarga la última versión del repositorio remoto (sin tocar tus archivos aún).
 git reset --hard origin/main # Reemplaza tu rama local con la versión del remoto. Tu trabajo local se borra y se reemplaza completamente con lo que hay en el remoto.
