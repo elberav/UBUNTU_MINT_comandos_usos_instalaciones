@@ -47,7 +47,7 @@ git remote add origin https://github.com/nombre_usuario/nombre_proyecto.git # Co
 git add . # Agrega todos los archivos modificados y añadidos en un repositorio local (área de staging), preparándolos para el próximo commit.
 git commit -m "tu_comentario" # Comenta los cambios de los archivos editados y añadidos.
 git status # Muestra el estado actual de tu repositorio Git.
-git status -s `ó` git status --short# Muestra un resumen conciso de los cambios, usando códigos de una o dos letras para indicar el estado de cada archivo (ej: ?? para no rastreado,  M para modificado, A  para agregado).
+git status -s `ó` git status --short # Muestra un resumen conciso de los cambios, usando códigos de una o dos letras para indicar el estado de cada archivo (ej: ?? para no rastreado,  M para modificado, A  para agregado).
 git push -u origin main # Sube tus cambios locales del branch main al repositorio remoto. Cambiar nombre de rama si quieres crear uno nuevo en GitHub y subir cambios 
 git push origin main # Para las subidas siguientes al repositorio remoto, una vez que ya estableciste la conexión inicial con git push `-u origin main`
 git push --force # Fuerza el push, sobrescribiendo el historial y archivos remotos. Puede borrar cambios de otros si no se tiene cuidado.
