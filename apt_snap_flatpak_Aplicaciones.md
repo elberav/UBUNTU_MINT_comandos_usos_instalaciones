@@ -4,11 +4,6 @@
 sudo apt update
 sudo apt install gnome-software # Instala un gestor de descargas de programas o aplicaciones
 ```
-### Tmux
-```bash
-sudo apt update
-sudo apt install tmux # Multiplexor de terminales. Poderoso enfocado en seguridad y velocidad.
-```
 ### Krita
 ```bash
 sudo apt update
