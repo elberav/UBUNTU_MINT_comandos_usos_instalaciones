@@ -4,6 +4,11 @@
 sudo apt update
 sudo apt install gnome-software # Instala un gestor de descargas de programas o aplicaciones
 ```
+### Zellij
+```bash
+sudo apt update
+sudo apt install zellij # Multiplexor de terminales moderno  enfocado en seguridad y velocidad.
+```
 ### Krita
 ```bash
 sudo apt update
