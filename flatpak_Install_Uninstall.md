@@ -1,3 +1,9 @@
+# INSTALAR Flatpak Y RELACIONADOS
+```bash
+sudo apt install flatpak # Ejecutar y reiniciar sesion antes de añadir `flathub` para aplicar cambios 
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
+
 # DESINSTALAR Flatpak Y RELACIONADOS
 ```bash
 flatpak list # Listar las aplicaciones Flatpak instaladas
