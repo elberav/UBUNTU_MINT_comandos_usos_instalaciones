@@ -48,6 +48,7 @@ flatpak install flathub io.gitlab.theevilskeleton.Upscaler
 flatpak install flathub org.upscayl.Upscayl
 ```
 ### [Echo](https://flathub.org/apps/io.github.lo2dev.Echo) (Hacer ping a servidores)
+> #### [Consultar Repositorio en caso de permisos](https://github.com/lo2dev/Echo)
 ```bash
 flatpak install flathub io.github.lo2dev.Echo # Parámetros de ping avanzados como conteo de ping, tiempo de espera, etc.
 ```
