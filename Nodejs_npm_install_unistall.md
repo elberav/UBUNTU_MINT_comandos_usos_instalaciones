@@ -13,6 +13,10 @@ sudo apt install -y nodejs
 node -v
 npm -v
 ----------------------------------------------------------------------------
+### ***DESINSTALAR***
+sudo apt purge nodejs # Elimina configuraciones
+sudo apt autoremove nodejs # Elimina dependencias y paquete
+
 ### Quitar o eliminar el repositorio
 ls /etc/apt/sources.list.d/ # Lista los repositorios
     > ej:`nodesource.list`
