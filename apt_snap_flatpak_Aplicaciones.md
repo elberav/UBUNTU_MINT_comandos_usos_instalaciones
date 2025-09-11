@@ -16,6 +16,17 @@ sudo apt update
 sudo apt install gimp # Editar imágenes y fotos (Retoque fotográfico y diseño gráfico, collages, posters, banners)
 ```
 
+### Brave (Navegador web)
+```bash
+sudo apt update
+
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+sudo apt install brave-browser
+```
+
 ### Inkscape
 ```bash
 sudo apt update
