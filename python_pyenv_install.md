@@ -57,6 +57,7 @@ pyenv activate mi_proyecto_venv # Activas el entorno virtual de forma temporal, 
 
 pyenv deactivate # Volver al sistema o desactivarlo para usar el predeterminado que estaba anteriormente
 pyenv local mi_proyecto_venv # Activa el entorno virtual de forma permanentente creando un `.python-version` en el proyecto raiz, no s epuede deshabilitar (recomendado de forma local). SE PUEDE USAR el mismo entorno en cualquier ruta o proyecto
+pyenv uninstall .venv # Desinstala el entorno creado en pyenv
 
 
 #### Muestra si pyenv esta activo o usado
