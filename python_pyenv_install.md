@@ -56,7 +56,7 @@ pyenv uninstall mi_proyecto_venv # Elimina el entorno creado
 pyenv activate mi_proyecto_venv # Activas el entorno virtual de forma temporal, solo para la terminal abierta. Si cierras la terminal o abres una nueva, el entorno vuelve al predeterminado (por ejemplo, system o el que diga `.python-version` en tu directorio)
 
 pyenv deactivate # Volver al sistema o desactivarlo para usar el predeterminado que estaba anteriormente
-pyenv local mi_proyecto_venv # Activa el entorno virtual de forma permanentente creando un `.python-version` en el proyecto raiz, no s epuede deshabilitar (recomendado de forma local). SE PUEDE USAR el mismo entorno en cualquier ruta o proyecto
+pyenv local mi_proyecto_venv # pyenv activará automáticamente ese entorno o versión. (recomendado de forma local). SE PUEDE USAR el mismo entorno en cualquier ruta o proyecto
 
 
 #### Muestra si pyenv esta activo o usado
