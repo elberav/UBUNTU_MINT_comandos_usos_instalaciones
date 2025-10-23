@@ -25,6 +25,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 #### 5. Actualiza e instala Docker Engine y sus componentes
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install docker-compose
 
 #### 6. Ver la version del docker
 sudo docker --version
