@@ -35,6 +35,26 @@ sudo usermod -aG docker $USER
 newgrp docker
 docker run hello-world # PRUEBA PARA VER SI DOCKER RESPONDE
 
+___________________________________________________
+
+Este comando levanta (inicia y ejecuta) todos los servicios definidos en tu archivo
+docker-compose.yml. Cada servicio se convierte en un contenedor en ejecución (por
+ejemplo: un contenedor para Hadoop, otro para Spark, otro para Flink, etc.).
+docker compose up -d
+
+docker ps
+
+Ver también los contenedores detenidos:
+docker ps -a
+
+Ver más detalles (en formato extendido):
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"
+
+Paso 1: Parar y eliminar los contenedores actuales
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+_______________________________________________
+
 
 #### >>>>>>>DESINSTALAR DOCKER Y DEPENDENCIAS<<<<<<<
 # Paso 1: Desinstalar los paquetes de Docker
