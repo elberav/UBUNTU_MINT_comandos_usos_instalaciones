@@ -37,6 +37,15 @@ docker run hello-world # PRUEBA PARA VER SI DOCKER RESPONDE
 
 ___________________________________________________
 
+Detén y elimina los contenedores actuales:**
+    ```sh
+    docker compose down
+    ```
+
+2.  **Vuelve a construir y levantar los servicios en segundo plano:**
+    ```sh
+    docker compose up -d
+
 Este comando levanta (inicia y ejecuta) todos los servicios definidos en tu archivo
 docker-compose.yml. Cada servicio se convierte en un contenedor en ejecución (por
 ejemplo: un contenedor para Hadoop, otro para Spark, otro para Flink, etc.).
