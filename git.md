@@ -32,6 +32,7 @@ git config --list
     - [x] `public_repo` – Access public repositories
     - [x] `repo:invite` – Access repository invitations
     - [x] `security_events` – Read and write security events
+- [x] `workflowUpdate` - GitHub Action workflows
 - [ ] `admin:org` – Full control of orgs and teams, read and write org projects
     - [ ] `write:org` – Read and write org and team membership, read and write org projects
     - [x] `read:org` – Read org and team membership, read org projects
