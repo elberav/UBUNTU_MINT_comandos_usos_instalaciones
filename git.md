@@ -58,7 +58,9 @@ git push --force origin main `ó` --force -u origin main  # Fuerza el push, sobr
 git remote -v # Muestra las URLs de los repositorios remotos configurados. Útil para verificar a dónde se están enviando o desde dónde se están trayendo los cambios.
 ---------------------------------------------------------------------
 git pull origin main # Trae los cambios editados o añadidos, lo hace igual con nuevos archivos añadidos
+
 git pull --rebase origin main
+# Guarda tus commits, descarga los commits remotos y vuelve a aplicar tus commits después de los commits remotos creando una historia limpia y linea.
 # Descarga los cambios de origin/main y reordena tus commits locales encima de ellos.
 # Si en el remoto se eliminaron carpetas, archivos o líneas de código, en tu local también se reflejarán esos cambios al finalizar el rebase.
 # Mantiene un historial más lineal, sin commits de merge.
