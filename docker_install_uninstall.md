@@ -61,6 +61,9 @@ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Names
 
 Paso 1: Parar y eliminar los contenedores actuales
 docker stop $(docker ps -aq)
+
+# Limpieza profunda por si acaso
+docker system prune -f 
 docker rm $(docker ps -aq)
 docker image rm -f $(docker image ls -q)
 _______________________________________________
