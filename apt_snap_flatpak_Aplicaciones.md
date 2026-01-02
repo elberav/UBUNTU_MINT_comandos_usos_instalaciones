@@ -29,7 +29,7 @@ sudo apt install brave-browser
 Note that Debian focuses more on stability rather than newest features. Therefore packages will typically contain some older version, compared to the latest release.
 ### [DB Browser for SQLite](https://sqlitebrowser.org/dl/) (Debian, Ubuntu, ...)
 
-### Inkscape
+### Inkscape (Debian, Ubuntu)
 ```bash
 sudo apt update
 sudo apt install inkscape # Diseñar logos, íconos y gráficos vectoriales (Diseño web y gráfico vectorial, logotipo, iconos)
@@ -41,6 +41,7 @@ sudo apt install inkscape # Diseñar logos, íconos y gráficos vectoriales (Dis
 flatpak install flathub com.github.wwmm.easyeffects # Herramienta avanzada de manipulación de audio
 flatpak run com.github.wwmm.easyeffects # Arrancar aplicacion
 ```
+
 ### [Draw.io](https://flathub.org/en/apps/com.jgraph.drawio.desktop) (Debian, Ubuntu)
 ```bash
 flatpak install flathub com.jgraph.drawio.desktop
@@ -59,6 +60,7 @@ flatpak install flathub io.gitlab.theevilskeleton.Upscaler
 ##### Opcion 2 
 flatpak install flathub org.upscayl.Upscayl
 ```
+
 ### [Echo](https://flathub.org/apps/io.github.lo2dev.Echo) (Hacer ping a servidores) (Debian, Ubuntu)
 > #### [Consultar Repositorio en caso de permisos](https://github.com/lo2dev/Echo)
 ```bash
