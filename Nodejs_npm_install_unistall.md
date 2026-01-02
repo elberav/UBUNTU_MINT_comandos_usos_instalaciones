@@ -48,4 +48,19 @@ npx localtunnel --port 5500 # Ejecucion temporal
 
 ```
 > ## <a href="https://nodejs.org/es/download" title="clic aqui">INTALAR CON nvm - GESTIONAR VERSIONES</a>
+```bash
+## Desinstalar una versión específica de Node
+nvm uninstall 24
 
+## Desinstalar nvm y todas las versiones de Node
+rm -rf ~/.nvm
+
+##Luego elimina nvm de tu shell (solo una vez):
+nano ~/.bashrc
+
+## Borra las líneas relacionadas con nvm y guarda.
+##(O si usas zsh, edita ~/.zshrc).
+
+## Cierra y abre la terminal y Verifica:
+node -v
+```
