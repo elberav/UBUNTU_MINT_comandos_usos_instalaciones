@@ -2,39 +2,52 @@
 ```bash
 #### 1. Actualizar paquetes existentes
 sudo apt update
-sudo apt upgrade -y
+sudo apt install -y ca-certificates curl
 
-#### 2. Instala paquetes necesarios como la confianza en las conexiones segurtas (HTTPS)
-sudo apt install -y ca-certificates curl gnupg lsb-release
+#### 2. Crear directorio de claves y añadir clave oficial Docker
+sudo install -m 0755 -d /etc/apt/keyrings
 
-#### 3. Descargar y añadir la clave GPG oficial de Docker
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg \
+-o /etc/apt/keyrings/docker.asc # Debian
 
--------------------------------------------------------------------------------
-#### 3.5. >>>ALTERNATIVO AL COMANDO ANTERIOR EN CASO DE ERROR<<<
-curl -fsSL https://get.docker.com/ -o get-docker.sh # ALTERNATIVO (Este script contiene todas las instrucciones para detectar tu distribución y versión de sistema operativo, y luego instalar la última versión estable de Docker automáticamente)
-sudo sh get-docker.sh # Ejecutar el script de instalación con privilegios de administrador. Ejecuta ese script descargado con permisos de superusuario (sudo), lo que agrega el repositorio de Docker. Importa la clave GPG. Instala docker-ce, docker-ce-cli y containerd.io. Habilita y arranca el servicio de Docker.
--------------------------------------------------------------------------------
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+-o /etc/apt/keyrings/docker.asc # Ubuntu
 
-#### 4. Le dice a tu sistema dónde encontrar los paquetes de Docker. Añade el repositorio oficial de Docker
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-  https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-#### 5. Actualiza e instala Docker Engine y sus componentes
+#### 3. Añadir repositorio oficial Docker (formato moderno)
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+#### 4. Actualizar índices
 sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo apt install docker-compose
 
-#### 6. Ver la version del docker
-sudo docker --version
-#### 7. `usermod -aG docker $USER` Agrega tu usuario al grupo docker para Docker sin necesidad de usar `sudo`
+#### 5. Instalar Docker + Compose (oficiales)
+sudo apt install -y \
+docker-ce docker-ce-cli containerd.io \
+docker-buildx-plugin docker-compose-plugin
+
+#### 6. Iniciar y habilitar Docker
+sudo systemctl enable docker
+sudo systemctl start docker
+### Verificar:
+sudo systemctl status docker
+
+#### 7. Usar Docker SIN sudo (correcto y permanente)
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
+docker run hello-world
+
 #### 8. `newgrp docker` hace que la terminal actual reconozca inmediatamente que tu usuario pertenece al nuevo grupo docker
 sudo usermod -aG docker $USER
 newgrp docker
 docker run hello-world # PRUEBA PARA VER SI DOCKER RESPONDE
-
 ___________________________________________________
 
 Detén y elimina los contenedores actuales:**
@@ -70,18 +83,78 @@ _______________________________________________
 
 
 #### >>>>>>>DESINSTALAR DOCKER Y DEPENDENCIAS<<<<<<<
-# Paso 1: Desinstalar los paquetes de Docker
-sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-# Paso 2: Desinstalar paquetes de versiones antiguas (por si acaso)
-sudo apt purge -y docker docker-engine docker.io docker-doc docker-compose
-# Paso 3: Eliminar los datos de Docker
-sudo rm -rf /var/lib/docker
-sudo rm -rf /var/lib/containerd
-# Paso 4: Limpiar las configuraciones del gestor de paquetes (APT)
-sudo rm /etc/apt/sources.list.d/docker.list
-sudo rm -rf /etc/apt/keyrings/docker.gpg
-# Paso 5: Limpiar la caché de paquetes
-sudo apt clean
-# Paso 6: Verificar que se ha desinstalado
+sudo apt purge -y \
+docker.io docker-compose docker-doc podman-docker \
+containerd runc docker-buildx
+
+sudo rm -rf /var/lib/docker /var/lib/containerd
+sudo rm -rf /etc/docker ~/.docker
+sudo rm -f /etc/apt/keyrings/docker.asc /etc/apt/keyrings/docker.gpg
+sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/sources.list.d/docker.sources
+
+sudo apt autoremove -y
+sudo apt autoclean
+
+# Verificar que se ha desinstalado
 which docker
+```
+
+### I. Optimizar Docker para tu PC
+```bash
+Creamos configuración recomendada.
+sudo mkdir -p /etc/docker
+sudo nano /etc/docker/daemon.json
+#### Pega el siguiente `json`
+```
+
+```json
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  },
+  "storage-driver": "overlay2",
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+```
+```bash
+#### Guardar y reiniciar Docker:
+sudo systemctl restart docker
+
+#### Evita que los logs llenen el disco
+#### Mejora estabilidad
+#### Es ideal para 8 GB RAM
+```
+
+### II. Docker Compose base (plantilla limpia)
+```bash
+#### Crea una carpeta de prueba
+mkdir docker-test
+cd docker-test
+
+#### Crea el archivo
+nano docker-compose.yml
+
+### Contenido recomendado en el siuiente `YAML`
+```
+```yaml
+
+services:
+  app:
+    image: nginx:alpine
+    container_name: nginx_test
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+```
+```bash
+#### Levantarlo
+docker compose up -d
+
+#### Probar
+curl http://localhost:8080
+
+#### O abre en navegador
+http://localhost:8080
 ```
