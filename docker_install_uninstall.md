@@ -48,6 +48,11 @@ docker run hello-world
 sudo usermod -aG docker $USER
 newgrp docker
 docker run hello-world # PRUEBA PARA VER SI DOCKER RESPONDE
+
+#### 8. Ver versiones
+docker --version
+docker buildx version
+docker compose version
 ___________________________________________________
 
 Detén y elimina los contenedores actuales:**
