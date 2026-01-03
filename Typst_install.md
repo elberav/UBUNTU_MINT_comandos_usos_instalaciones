@@ -4,8 +4,7 @@
 ARCH="x86_64-unknown-linux-musl"
 
 # 2. Obtener la URL de la ÚLTIMA versión automáticamente desde GitHub
-URL=$(curl -s https://api.github.com/repos/typst/typst/releases/latest | grep "browser_download_url.*$ARCH.tar.xz" | cut -d : -f 2,3 | tr -d \")
-
+URL=$(curl -s https://api.github.com/repos/typst/typst/releases/latest | grep "browser_download_url.*$ARCH.tar.xz" | cut -d '"' -f 4)
 # 3. Descargar
 wget -O typst.tar.xz "$URL"
 
