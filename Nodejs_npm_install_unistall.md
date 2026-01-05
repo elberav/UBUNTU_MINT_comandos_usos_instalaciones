@@ -51,6 +51,7 @@ npx localtunnel --port 5500 # Ejecucion temporal
 ```bash
 ## Desinstalar una versión específica de Node
 nvm uninstall 24
+nvm install 22 && nvm use 22 # Otra version personalizado
 
 ## Desinstalar nvm y todas las versiones de Node
 rm -rf ~/.nvm
